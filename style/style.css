@@ -1,0 +1,16 @@
+body {
+    display : flex;
+    justify-content:center;
+    background-color: aliceblue;
+}
+body div{
+    display : flex;
+    flex-direction: column;
+    justify-content:center;
+    max-width: 50vw;
+}
+#count{
+        align-self: center;
+        color:pink;
+        font-size: 50px;
+}

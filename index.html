@@ -4,31 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Basic Manipulation</title>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link href="./style/style.css" rel="stylesheet" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js" defer></script>
+    <script src="./scripts/main.js" defer></script> 
+    <!-- defer forces the browser to load the file as soon as it encounters it, eliminating the need to put the script at the end of the body,
+     i'd rather use that in order to keep the code cleaner -->
 </head>
 <body>
     <div id="app">
         <h1>{{title}}</h1>
-        <p>{{nb}}</p>
-        <button @click="increment">Augmenter</button>
+        <p id="count" >{{nb}}</p>
+        <button @click="increment">Increment</button>
     </div>
-    <script>
-        const app = Vue.createApp({
-            data () {
-                return{
-                    title : 'Welcome to my vue training range',
-                    nb : 0,
-                };
-            },
-            methods : {
-                increment(){
-                    this.nb++;
-                    console.log('Test');
-                }
-            }
-
-        })
-        app.mount('#app');
-    </script>
 </body>
 </html>
