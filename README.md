@@ -1,2 +1,3 @@
 # InternshipClicker
- 
+## VueJS project
+
