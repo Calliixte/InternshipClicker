@@ -5,18 +5,60 @@ const app = Vue.createApp({
             nb : 0,
             clickPower : 1,
             upgradesShown : false,
+            //notes for me : [] = array | {} = object
+            //also for the object array underneath i will try to store it into a file later (idk if it is possible yet but i'd guess a json thing would work)
+            upgrades : [
+                {
+                    id: 0,
+                    title : "Click Power Upgrade",
+                    description : "Augments the click power by 1",
+                    method : "upgradeClickPower",
+                    //consider adding a baseCost in order to scale the price based on the initial cost of the upgrade
+                    cost : 10,
+                    amountBought: 0
+                },
+                {
+                    id: 1,
+                    title : "Click Power Upgrade 2",
+                    description : "Paid dlc of the first click power upgrade",
+                    method : "upgradeClickPower",
+                    cost : 100,
+                    amountBought: 0
+                }
+            ],
+
         };
     },
     methods : {
         increment(){
             this.nb+=this.clickPower;
-            console.log('Test');
         },
         showUpgrades(){
             this.upgradesShown = !this.upgradesShown;
         },
         changeClickPower(nb){
             this.clickPower+=nb;
+        },
+        giveMax(){
+            this.nb+=2000;
+        },
+        processUpgrade(id){
+            if(this.nb>this.upgrades[id].cost){
+                let methodName = this.upgrades[id].method;
+                if (this[methodName]) {
+                    this[methodName](id);
+                }
+                this.upgrades[id].amountBought++;
+                this.upgrades[id].cost+=Math.round((this.upgrades[id].amountBought*this.upgrades[id].cost)/2);
+            }else{
+                console.log("Cannot buy this " + this.upgrades[id].title);
+            }
+
+        },
+        upgradeClickPower(id){
+            console.log(this.upgrades[id].cost);
+                this.changeClickPower(1);
+                this.nb-=this.upgrades[id].cost;
         }
     }
 

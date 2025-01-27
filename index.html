@@ -7,7 +7,7 @@
     <link href="./style/style.css" rel="stylesheet" />
     <script src="https://unpkg.com/vue@3/dist/vue.global.js" defer></script>
     <script src="./scripts/main.js" defer></script> 
-    <!-- defer forces the browser to load the file as soon as it encounters it, eliminating the need to put the script at the end of the body,
+    <!-- defer forces the browser to load the file as soon as it encounters it, eliminating the need to put the script tags at the end of the body,
      i'd rather use that in order to keep the code cleaner -->
 </head>
 <body>
@@ -16,12 +16,17 @@
         <p id="count" >{{nb}}</p>
         <button @click="increment">Increment</button>
         <button @click="showUpgrades">Show/Hide Upgrades</button>
-        <div id="upgrades" v-if="upgradesShown">
-            <p>Insert upgrades here</p>
+        <div id="upgradeList" v-if="upgradesShown">
+            <div class="upgrade" v-for="(up,index) in upgrades" :key="index">
+                <h3>{{upgrades[index].title}}</h3>
+                <p>{{upgrades[index].description}}</p>
+                <button @click="processUpgrade(index)">Buy ({{upgrades[index].cost}} Cv)</button>
+            </div>
         </div>
         <div v-else>
             <p>No upgrades shown</p>
         </div>
+        <button @click="giveMax">Cheating</button>
     </div>
 </body>
 </html>
