@@ -15,6 +15,13 @@
         <h1>{{title}}</h1>
         <p id="count" >{{nb}}</p>
         <button @click="increment">Increment</button>
+        <button @click="showUpgrades">Show/Hide Upgrades</button>
+        <div id="upgrades" v-if="upgradesShown">
+            <p>Insert upgrades here</p>
+        </div>
+        <div v-else>
+            <p>No upgrades shown</p>
+        </div>
     </div>
 </body>
 </html>
