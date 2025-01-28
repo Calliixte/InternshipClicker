@@ -1,3 +1,4 @@
+
 const app = Vue.createApp({
     data () {
         return{
@@ -21,8 +22,16 @@ const app = Vue.createApp({
                     id: 1,
                     title : "Click Power Upgrade 2",
                     description : "Paid dlc of the first click power upgrade",
-                    method : "upgradeClickPower",
+                    method : "timesTwoClickPower",
                     cost : 100,
+                    amountBought: 0
+                },
+                {
+                    id: 2,
+                    title : "Passive Upgrade 1",
+                    description : "Testing the unfiltered power of pure clicking",
+                    method : "passiveClick",
+                    cost : 2,
                     amountBought: 0
                 }
             ],
@@ -39,8 +48,11 @@ const app = Vue.createApp({
         changeClickPower(nb){
             this.clickPower+=nb;
         },
+        changeScore(nb){
+            this.nb+=nb;
+        },
         giveMax(){
-            this.nb+=2000;
+            this.nb+=999999;
         },
         processUpgrade(id){
             if(this.nb>this.upgrades[id].cost){
@@ -56,11 +68,23 @@ const app = Vue.createApp({
 
         },
         upgradeClickPower(id){
-            console.log(this.upgrades[id].cost);
                 this.changeClickPower(1);
                 this.nb-=this.upgrades[id].cost;
-        }
+        },
+        timesTwoClickPower(id){
+            this.changeClickPower(this.clickPower);
+            this.nb-=this.upgrades[id].cost;
+        },
+        async passiveClick(){
+            console.log("je dors");
+            await sleep(2000);
+            console.log("j'ai dormi");
+        },
     }
 
 })
 app.mount('#app');
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
