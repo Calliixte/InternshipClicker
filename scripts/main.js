@@ -3,7 +3,9 @@ const app = Vue.createApp({
     data () {
         return{
             title : 'Welcome to my vue training range',
-            nb : 0,
+            Cv : 0,
+            passiveCv : 0,
+            passiveStarted : false,
             clickPower : 1,
             upgradesShown : false,
             //notes for me : [] = array | {} = object
@@ -30,7 +32,7 @@ const app = Vue.createApp({
                     id: 2,
                     title : "Passive Upgrade 1",
                     description : "Testing the unfiltered power of pure clicking",
-                    method : "passiveClick",
+                    method : "passiveUpTest",
                     cost : 2,
                     amountBought: 0
                 }
@@ -40,7 +42,7 @@ const app = Vue.createApp({
     },
     methods : {
         increment(){
-            this.nb+=this.clickPower;
+            this.Cv+=this.clickPower;
         },
         showUpgrades(){
             this.upgradesShown = !this.upgradesShown;
@@ -49,36 +51,46 @@ const app = Vue.createApp({
             this.clickPower+=nb;
         },
         changeScore(nb){
-            this.nb+=nb;
+            this.Cv+=nb;
         },
         giveMax(){
-            this.nb+=999999;
+            this.Cv+=999999;
         },
         processUpgrade(id){
-            if(this.nb>this.upgrades[id].cost){
+            
+            if(this.Cv>this.upgrades[id].cost){
                 let methodName = this.upgrades[id].method;
                 if (this[methodName]) {
                     this[methodName](id);
                 }
                 this.upgrades[id].amountBought++;
                 this.upgrades[id].cost+=Math.round((this.upgrades[id].amountBought*this.upgrades[id].cost)/2);
+                this.Cv-=this.upgrades[id].cost;
             }else{
                 console.log("Cannot buy this " + this.upgrades[id].title);
+            }
+            if(this.passiveCv && !this.passiveStarted){
+                this.applyPassive();
+                this.passiveStarted= true;
             }
 
         },
         upgradeClickPower(id){
                 this.changeClickPower(1);
-                this.nb-=this.upgrades[id].cost;
+
         },
         timesTwoClickPower(id){
             this.changeClickPower(this.clickPower);
-            this.nb-=this.upgrades[id].cost;
         },
-        async passiveClick(){
-            console.log("je dors");
-            await sleep(2000);
-            console.log("j'ai dormi");
+        passiveUpTest(id){
+            this.passiveCv+=10;
+        },
+        async applyPassive(){
+                while(true){
+                    await sleep(1000);
+                    this.Cv+=this.passiveCv;
+                }
+
         },
     }
 

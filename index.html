@@ -13,9 +13,10 @@
 <body>
     <div id="app">
         <h1>{{title}}</h1>
-        <p id="count" >{{nb}}</p>
+        <p id="count" >{{Cv}}</p>
         <button @click="increment">Increment</button>
         <button @click="showUpgrades">Show/Hide Upgrades</button>
+        <template></template> 
         <div id="upgradeList" v-if="upgradesShown">
             <div class="upgrade" v-for="(up,index) in upgrades" :key="index">
                 <h3>{{upgrades[index].title}}</h3>
@@ -27,7 +28,7 @@
             <p>No upgrades shown</p>
         </div>
         <button @click="giveMax">Cheating</button>
-        <button @click="passiveClick">sleepTest</button>
+        <button @click="applyPassive">sleepTest</button>
     </div>
 </body>
 </html>
