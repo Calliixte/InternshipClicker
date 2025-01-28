@@ -2,7 +2,7 @@
 const app = Vue.createApp({
     data () {
         return{
-            title : 'Welcome to my vue training range',
+            title : 'Random aah clicker',
             Cv : 0,
             passiveCv : 0,
             passiveStarted : false,
