@@ -15,30 +15,31 @@
     <div id="app">
         <h1 class="text">{{title}}</h1>
         <p id="count" class="text">{{Cv}}</p>
-        <button @click="increment">Increment</button>
-        <button @click="showUpgrades">Show/Hide Upgrades</button>
-        <button @click="showSettings">Settings</button>
+        <button class="button" @click="increment">Increment</button>
+        <button class="button"  @click="showUpgrades">Show/Hide Upgrades</button>
+        <button class="button"  @click="showSettings">Settings</button>
         <template></template> 
         <div id="upgradeList" v-show="upgradesShown"> 
             <!-- make this a vshow for more optimisation i think -->
             <div class="upgrade" v-for="(up,index) in upgrades" :key="index">
                 <h3 class="text">{{upgrades[index].title}}</h3>
                 <p class="text">{{upgrades[index].description}}</p>
-                <button @click="processUpgrade(index)">Buy ({{upgrades[index].cost}} Cv)</button>
+                <button class="button" @click="processUpgrade(index)">Buy ({{upgrades[index].cost}} Cv)</button>
             </div>
         </div>
         <div v-else>
             <p class="text" v-show="!upgradesShown">No upgrades shown</p>
         </div>
         <div v-show="settingsShown" class = "popup">
-            <button @click="showSettings">x</button>
+            <button class="BTNClose" @click="showSettings">x</button>
             <h3>Change the interface</h3>
             <input type="color" id="col1">Background color</input>
             <input type="color" id="col2">Text color</input>
-            <button onclick="addTwoColors()">Add new theme</button>
+            <button class="button"  onclick="addTwoColors()">Add new theme</button>
             <table>
                 <tbody>
                     <tr>
+                        <!-- TODO : turn this & the functions into a vuejs thing -->
                         <th>Background Color</th>
                         <th>Text Color</th>
                     </tr>
@@ -59,7 +60,7 @@
 
         </div>
         <!-- faire une giga zone de texte invisible au dessus du truc dans laquelle les lettres de cheat code finiront -->
-        <button @click="giveMax">Cheating</button>
+        <button class="button" @click="giveMax">Cheating</button>
     </div>
 </body>
 </html>

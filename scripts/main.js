@@ -61,7 +61,7 @@ const app = Vue.createApp({
             this.Cv+=999999;
         },
         processUpgrade(id){
-            
+            // for some reason there is a problem in the game loop that wasnt there before
             if(this.Cv>this.upgrades[id].cost){
                 let methodName = this.upgrades[id].method;
                 if (this[methodName]) {
