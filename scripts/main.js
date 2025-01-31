@@ -105,7 +105,7 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-// purely javascriptn no vuejs as it is work done in uni that i just
+// purely javascript no vuejs as it is work done in uni that i just
 // imported on there
 function dynamicCol(){ 
     const cases = document.querySelectorAll("body table tr td");
