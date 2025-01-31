@@ -7,6 +7,7 @@ const app = Vue.createApp({
             passiveCv : 0,
             passiveStarted : false,
             clickPower : 1,
+            settingsShown : false,
             upgradesShown : false,
             //notes for me : [] = array | {} = object
             //also for the object array underneath i will try to store it into a file later (idk if it is possible yet but i'd guess a json thing would work)
@@ -53,6 +54,9 @@ const app = Vue.createApp({
         changeScore(nb){
             this.Cv+=nb;
         },
+        showSettings(){
+            this.settingsShown= !this.settingsShown;
+        },
         giveMax(){
             this.Cv+=999999;
         },
@@ -94,9 +98,36 @@ const app = Vue.createApp({
         },
     }
 
-}) //test
+})
 app.mount('#app');
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
+
+
+function dynamicCol(){ 
+    const cases = document.querySelectorAll("body table tr td");
+    cases.forEach((element) => element.style.backgroundColor=element.innerText);
+}
+function changeColor(e){
+    console.log("New color : " + e.target.innerText);
+    const text = document.querySelectorAll("body .text");
+    let ligne=e.target.parentElement.innerText;
+    console.log("Ligne text: " + ligne);
+    const mots = ligne.split("\t");
+    console.log("full array " + mots);
+    console.log(" array 0 : " + mots[1])
+    const fgCol = mots[1];
+    const bgCol = mots[0];
+    const bg= document.querySelector("body");
+    bg.style.backgroundColor=bgCol;
+    text.forEach((element) => element.style.color=fgCol);
+}
+function colorText(){
+    const p = document.querySelector('body table');
+    p.addEventListener('click',changeColor);
+}
+
+document.addEventListener("DOMContentLoaded",(event => {dynamicCol()}));
+document.addEventListener("DOMContentLoaded",(event => {colorText()}));

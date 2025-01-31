@@ -7,25 +7,53 @@
     <link href="./style/style.css" rel="stylesheet" />
     <script src="https://unpkg.com/vue@3/dist/vue.global.js" defer></script>
     <script src="./scripts/main.js" defer></script> 
+    
     <!-- defer forces the browser to load the file as soon as it encounters it, eliminating the need to put the script tags at the end of the body,
      i'd rather use that in order to keep the code cleaner -->
 </head>
 <body>
     <div id="app">
-        <h1>{{title}}</h1>
-        <p id="count" >{{Cv}}</p>
+        <h1 class="text">{{title}}</h1>
+        <p id="count" class="text">{{Cv}}</p>
         <button @click="increment">Increment</button>
         <button @click="showUpgrades">Show/Hide Upgrades</button>
+        <button @click="showSettings">Settings</button>
         <template></template> 
-        <div id="upgradeList" v-if="upgradesShown">
+        <div id="upgradeList" v-show="upgradesShown"> 
+            <!-- make this a vshow for more optimisation i think -->
             <div class="upgrade" v-for="(up,index) in upgrades" :key="index">
-                <h3>{{upgrades[index].title}}</h3>
-                <p>{{upgrades[index].description}}</p>
+                <h3 class="text">{{upgrades[index].title}}</h3>
+                <p class="text">{{upgrades[index].description}}</p>
                 <button @click="processUpgrade(index)">Buy ({{upgrades[index].cost}} Cv)</button>
             </div>
         </div>
         <div v-else>
-            <p>No upgrades shown</p>
+            <p class="text" v-show="!upgradesShown">No upgrades shown</p>
+        </div>
+        <div v-show="settingsShown" class = "popup">
+            <button @click="showSettings">x</button>
+            <h3>Changer l'interface</h3>
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Background Color</th>
+                        <th>Text Color</th>
+                    </tr>
+                    <tr>
+                        <td>AliceBlue </td>
+                        <td>LightPink </td>
+                    </tr>
+                    <tr>
+                        <td>teal </td>
+                        <td>lemonChiffon </td>
+                    </tr>
+                    <tr>
+                        <td>RoyalBlue</td>
+                        <td>Orchid</td>
+                    </tr>
+                </tbody>
+            </table>
+
         </div>
         <!-- faire une giga zone de texte invisible au dessus du truc dans laquelle les lettres de cheat code finiront -->
         <button @click="giveMax">Cheating</button>

@@ -1,0 +1,10 @@
+[
+                {
+                    "id": 0,
+                    "title" : "Click Power Upgrade",
+                    "description" : "Augments the click power by 1",
+                    "method" : "upgradeClickPower",
+                    "cost" : 10,
+                    "amountBought": 0
+                }
+]

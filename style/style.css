@@ -14,3 +14,20 @@ body div{
         color:pink;
         font-size: 50px;
 }
+
+.popup {
+    position: absolute;
+    margin: 30vh auto 0;
+    padding: 20px;
+    
+    width: 40vw;
+    height: fit-content;
+    
+    border-radius: 20px;
+    border: 3px solid rgba(209, 213, 219, 0.3);
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    background-color: rgba(255, 255, 255, 0.65);
+    transition: all 200ms ease;
+}
+/* lot of things in this popup css are not relevant at all its just a copy from a past project */
