@@ -32,7 +32,10 @@
         </div>
         <div v-show="settingsShown" class = "popup">
             <button @click="showSettings">x</button>
-            <h3>Changer l'interface</h3>
+            <h3>Change the interface</h3>
+            <input type="color" id="col1">Background color</input>
+            <input type="color" id="col2">Text color</input>
+            <button onclick="addTwoColors()">Add new theme</button>
             <table>
                 <tbody>
                     <tr>

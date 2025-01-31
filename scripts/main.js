@@ -105,7 +105,8 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-
+// purely javascriptn no vuejs as it is work done in uni that i just
+// imported on there
 function dynamicCol(){ 
     const cases = document.querySelectorAll("body table tr td");
     cases.forEach((element) => element.style.backgroundColor=element.innerText);
@@ -123,6 +124,22 @@ function changeColor(e){
 function colorText(){
     const p = document.querySelector('body table');
     p.addEventListener('click',changeColor);
+}
+function addTwoColors(){
+    const col1 = document.getElementById("col1");
+    const col2 = document.getElementById("col2");
+    premiereCouleur = col1.value;
+    secondeCouleur=col2.value;
+    const nt1 = document.createTextNode(premiereCouleur);
+    const nt2 = document.createTextNode(secondeCouleur);
+    const tableau = document.querySelector("body table");
+    let Ligne = document.createElement("tr");
+    let case1 = document.createElement("td");
+    let case2 = document.createElement("td");
+    case1.appendChild(nt1);case2.appendChild(nt2);
+    Ligne.appendChild(case1);Ligne.appendChild(case2);
+    tableau.appendChild(Ligne);
+    dynamicCol(); 
 }
 
 document.addEventListener("DOMContentLoaded",(event => {dynamicCol()}));
