@@ -111,15 +111,11 @@ function dynamicCol(){
     cases.forEach((element) => element.style.backgroundColor=element.innerText);
 }
 function changeColor(e){
-    console.log("New color : " + e.target.innerText);
     const text = document.querySelectorAll("body .text");
     let ligne=e.target.parentElement.innerText;
-    console.log("Ligne text: " + ligne);
-    const mots = ligne.split("\t");
-    console.log("full array " + mots);
-    console.log(" array 0 : " + mots[1])
-    const fgCol = mots[1];
-    const bgCol = mots[0];
+    const colors = ligne.split("\t");
+    const fgCol = colors[1];
+    const bgCol = colors[0];
     const bg= document.querySelector("body");
     bg.style.backgroundColor=bgCol;
     text.forEach((element) => element.style.color=fgCol);
