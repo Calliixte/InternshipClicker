@@ -15,8 +15,16 @@ body div{
         font-size: 50px;
 }
 #BTNSettings{
-        color : green;   
+    background-color: transparent;
+    border : none;
+    max-height: 5vh;
+    max-width: 5vw;
+    align-self: flex-end;
+}
+#BTNSettings img{
         /* TODO : find how to put this on the top right corner */
+        max-width:100%;
+        max-height:100%;
 }
 .button{
     background-color: transparent;
@@ -32,17 +40,18 @@ body div{
 }
 
 .BTNClose{
-    background-color: transparent; 
-    border: dotted black;
-    border-radius: 15px;
-    color: black;
-    padding: 4px 4px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    max-width: 2vw;
-    margin-left: 38vw;
+    display: flex;
+}
+.BTNClose button{
+    align-self: flex-end;
+    background-color: transparent;
+    border:none;
+    max-width: 3.5vw;
+    max-height: 3.5vh;
+}
+.BTNClose button img{
+    max-width:100%;
+    max-height:100%;
 }
 button:hover{
     cursor : pointer;
@@ -76,13 +85,12 @@ table td::after {
 
 
 .popup {
+    display: flex; /* i really have to get back to this later*/
     position: absolute;
     margin: 30vh auto 0;
     padding: 20px;
-    
     width: 40vw;
     height: fit-content;
-    
     border-radius: 20px;
     border: 3px solid rgba(209, 213, 219, 0.3);
     backdrop-filter: blur(10px) saturate(180%);

@@ -13,11 +13,13 @@
 </head>
 <body>
     <div id="app">
+        <button id="BTNSettings" @click="showSettings">
+            <img src="./externalFiles/settings.svg" alt="settings">
+        </button>
         <h1 class="text">{{title}}</h1>
         <p id="count" class="text">{{Cv}}</p>
         <button class="button" @click="increment">Increment</button>
         <button class="button"  @click="showUpgrades">Show/Hide Upgrades</button>
-        <button id="BTNSettings" @click="showSettings">Settings</button>
         <template></template> 
         <div id="upgradeList" v-show="upgradesShown"> 
             <!-- make this a vshow for more optimisation i think -->
@@ -31,10 +33,16 @@
             <p class="text" v-show="!upgradesShown">No upgrades shown</p>
         </div>
         <div v-show="settingsShown" class = "popup">
-            <button class="BTNClose" @click="showSettings">x</button>
+            <div class="BTNClose">
+                <button @click="showSettings">
+                    <img src="./externalFiles/close.svg" alt="leave">
+                </button>
+            </div>
+
             <h3>Change the interface</h3>
             <input type="color" id="col1">Background color</input>
             <input type="color" id="col2">Text color</input>
+
             <button class="button"  onclick="addTwoColors()">Add new theme</button>
             <table>
                 <tbody>
