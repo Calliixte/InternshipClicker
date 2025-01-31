@@ -17,7 +17,7 @@
         <p id="count" class="text">{{Cv}}</p>
         <button class="button" @click="increment">Increment</button>
         <button class="button"  @click="showUpgrades">Show/Hide Upgrades</button>
-        <button class="button"  @click="showSettings">Settings</button>
+        <button id="BTNSettings" @click="showSettings">Settings</button>
         <template></template> 
         <div id="upgradeList" v-show="upgradesShown"> 
             <!-- make this a vshow for more optimisation i think -->

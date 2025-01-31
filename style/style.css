@@ -14,6 +14,10 @@ body div{
         color:pink;
         font-size: 50px;
 }
+#BTNSettings{
+        color : green;   
+        /* TODO : find how to put this on the top right corner */
+}
 .button{
     background-color: transparent;
     border: dotted black;
@@ -44,6 +48,7 @@ button:hover{
     cursor : pointer;
 }
 
+
 .popup, table, tr, th {
     border: 1px solid black;
 }
@@ -55,7 +60,7 @@ button:hover{
 .popup,table, td {
     border-top: 2px solid black;
     border-bottom: 2px solid black;
-    position: relative; /* Nécessaire pour le positionnement du pseudo-élément */
+    position: relative; 
 }
 
 table td::after {

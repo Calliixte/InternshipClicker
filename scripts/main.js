@@ -67,9 +67,10 @@ const app = Vue.createApp({
                 if (this[methodName]) {
                     this[methodName](id);
                 }
+                this.Cv-=this.upgrades[id].cost;
                 this.upgrades[id].amountBought++;
                 this.upgrades[id].cost+=Math.round((this.upgrades[id].amountBought*this.upgrades[id].cost)/2);
-                this.Cv-=this.upgrades[id].cost;
+
             }else{
                 console.log("Cannot buy this " + this.upgrades[id].title);
             }
