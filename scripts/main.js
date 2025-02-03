@@ -7,6 +7,8 @@ const app = Vue.createApp({
             passiveCv : 0,
             passiveStarted : false,
             clickPower : 1,
+            maxUnlockedId : 0,
+            upgradesNb: null,
             settingsShown : false,
             upgradesShown : false,
             upgrades : null,
@@ -18,6 +20,7 @@ const app = Vue.createApp({
             .then(response=>response.json())
             .then(data=>{
                 this.upgrades = data;
+                this.upgradesNb= this.upgrades.length;
             })
             .catch(error=>console.error('JSON fetch error : ',error));
     },
@@ -41,6 +44,17 @@ const app = Vue.createApp({
         giveMax(){
             this.Cv+=999999;
         },
+        initUpgrade(id){
+            this.upgrades[id].cost=this.upgrades[id].baseCost;
+        },
+        unlockNew(){
+            if(this.maxUnlockedId>=this.upgradesNb-1){ //-1 cuz we are using ids that start at 0 for the upgrades
+                console.log("no upgrades left"); //find a way to signal this better
+                return 0;
+            }
+            this.maxUnlockedId++;
+            this.initUpgrade(this.maxUnlockedId);
+        },
         checkCost(id,event){
             let button = event.target;
             if(this.Cv>=this.upgrades[id].cost){
@@ -63,7 +77,9 @@ const app = Vue.createApp({
                 this.Cv-=this.upgrades[id].cost;
                 this.upgrades[id].amountBought++;
                 this.updatePrice(id);
-
+                if(this.upgrades[id].amountBought===10){
+                    this.unlockNew();
+                }
             }else{
                 console.log("Cannot buy this " + this.upgrades[id].title);
             }

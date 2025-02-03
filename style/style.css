@@ -15,7 +15,7 @@ body div{
         font-size: 50px;
 }
 #counter{
-    border : 5px solid pink;
+    border : 5px dotted black;
     border-radius: 10%;
     text-align: center;
     margin: 15px;

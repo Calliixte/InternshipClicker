@@ -15,7 +15,7 @@
     "description": "Paid dlc of the first click power upgrade",
     "effect" : "x2 click power",
     "method": "timesTwoClickPower",
-    "cost": 100,
+    "cost": -1,
     "baseCost":100,
     "amountBought": 0
   },
@@ -25,7 +25,7 @@
     "description": "Testing the unfiltered power of pure clicking",
     "effect" : "passive Cv +10",
     "method": "passiveUpTest",
-    "cost": 2,
+    "cost": -1,
     "baseCost":2,
     "amountBought": 0
   }
