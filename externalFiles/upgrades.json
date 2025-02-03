@@ -6,6 +6,7 @@
     "effect" : "+1 click power",
     "method": "upgradeClickPower",
     "cost": 10,
+    "baseCost":10,
     "amountBought": 0
   },
   {
@@ -15,6 +16,7 @@
     "effect" : "x2 click power",
     "method": "timesTwoClickPower",
     "cost": 100,
+    "baseCost":100,
     "amountBought": 0
   },
   {
@@ -24,6 +26,7 @@
     "effect" : "passive Cv +10",
     "method": "passiveUpTest",
     "cost": 2,
+    "baseCost":2,
     "amountBought": 0
   }
 ]

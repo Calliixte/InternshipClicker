@@ -14,6 +14,13 @@ body div{
         color:pink;
         font-size: 50px;
 }
+#counter{
+    border : 5px solid pink;
+    border-radius: 10%;
+    text-align: center;
+    margin: 15px;
+    padding: 5px;
+}
 #BTNSettings{
     background-color: transparent;
     border : none;
@@ -22,7 +29,6 @@ body div{
     align-self: flex-end;
 }
 #BTNSettings img{
-        /* TODO : find how to put this on the top right corner */
         max-width:100%;
         max-height:100%;
 }
@@ -73,13 +79,13 @@ button:hover{
 }
 
 table td::after {
-    content: ''; /* Contenu vide */
+    content: ''; 
     position: absolute;
-    left: 100%; /* Positionne la bordure à la fin de l'élément */
-    bottom: 0; /* Aligne la bordure au bas de l'élément */
-    width: 5px; /* Longueur de la bordure qui dépasse */
-    height: 2px; /* Épaisseur de la bordure */
-    background-color: black; /* Couleur de la bordure supplémentaire */
+    left: 100%; 
+    bottom: 0; 
+    width: 5px; 
+    height: 2px; 
+    background-color: black; 
 }
 
 

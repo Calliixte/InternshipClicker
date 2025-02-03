@@ -11,7 +11,6 @@ const app = Vue.createApp({
             upgradesShown : false,
             upgrades : null,
             //notes for me : [] = array | {} = object
-            //also for the object array underneath i will try to store it into a file later (idk if it is possible yet but i'd guess a json thing would work),
         };
     },
     mounted(){
@@ -50,8 +49,12 @@ const app = Vue.createApp({
                 button.style.cursor="no-drop";
             }
         },
+        updatePrice(id){
+            let currentCost = this.upgrades[id].cost; //still not that good of a upgrade function but at least it doesnt go to the moon now
+            let augmentation = this.upgrades[id].baseCost * this.upgrades[id].amountBought;
+            this.upgrades[id].cost = currentCost + augmentation;
+        },
         processUpgrade(id){
-            // for some reason there is a problem in the game loop that wasnt there before
             if(this.Cv>=this.upgrades[id].cost){
                 let methodName = this.upgrades[id].method;
                 if (this[methodName]) {
@@ -59,7 +62,7 @@ const app = Vue.createApp({
                 }
                 this.Cv-=this.upgrades[id].cost;
                 this.upgrades[id].amountBought++;
-                this.upgrades[id].cost+=Math.round((this.upgrades[id].amountBought*this.upgrades[id].cost)/2);
+                this.updatePrice(id);
 
             }else{
                 console.log("Cannot buy this " + this.upgrades[id].title);

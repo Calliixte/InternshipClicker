@@ -17,12 +17,16 @@
             <img src="./externalFiles/settings.svg" alt="settings">
         </button>
         <h1 class="text">{{title}}</h1>
-        <p id="count" class="text">{{Cv}}</p>
+        <h3 class="text">CVs per click : {{clickPower}} | Passive CVs : {{passiveCv}}</h3>
+        <div id="counter">
+            <h2 class="text">Applied to : </h2>
+            <h2 id="count" class="text">{{Cv}}</h2>
+            <h2 class="text">jobs</h2>
+        </div>
         <button class="button" @click="increment">Increment</button>
         <button class="button"  @click="showUpgrades">Show/Hide Upgrades</button>
         <template></template> 
         <div id="upgradeList" v-show="upgradesShown"> 
-            <!-- make this a vshow for more optimisation i think -->
             <div class="upgrade" v-for="(up,index) in upgrades" :key="index">
                 <h3 class="text">{{upgrades[index].title}}</h3>
                 <p class="text">{{upgrades[index].description}}</p>
@@ -68,7 +72,7 @@
             </table>
 
         </div>
-        <!-- faire une giga zone de texte invisible au dessus du truc dans laquelle les lettres de cheat code finiront -->
+        <!-- i want to keep this behind a cheat code combination, i'd need to track any user input tho -->
         <button class="button" @click="giveMax">Cheating</button>
     </div>
 </body>
