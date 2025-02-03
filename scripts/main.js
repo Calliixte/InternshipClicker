@@ -9,38 +9,20 @@ const app = Vue.createApp({
             clickPower : 1,
             settingsShown : false,
             upgradesShown : false,
+            upgrades : null,
             //notes for me : [] = array | {} = object
-            //also for the object array underneath i will try to store it into a file later (idk if it is possible yet but i'd guess a json thing would work)
-            upgrades : [
-                {
-                    id: 0,
-                    title : "Click Power Upgrade",
-                    description : "Augments the click power by 1",
-                    method : "upgradeClickPower",
-                    //consider adding a baseCost in order to scale the price based on the initial cost of the upgrade
-                    cost : 10,
-                    amountBought: 0
-                },
-                {
-                    id: 1,
-                    title : "Click Power Upgrade 2",
-                    description : "Paid dlc of the first click power upgrade",
-                    method : "timesTwoClickPower",
-                    cost : 100,
-                    amountBought: 0
-                },
-                {
-                    id: 2,
-                    title : "Passive Upgrade 1",
-                    description : "Testing the unfiltered power of pure clicking",
-                    method : "passiveUpTest",
-                    cost : 2,
-                    amountBought: 0
-                }
-            ],
-
+            //also for the object array underneath i will try to store it into a file later (idk if it is possible yet but i'd guess a json thing would work),
         };
     },
+    mounted(){
+        fetch('../externalFiles/upgrades.json')
+            .then(response=>response.json())
+            .then(data=>{
+                this.upgrades = data;
+            })
+            .catch(error=>console.error('JSON fetch error : ',error));
+    },
+
     methods : {
         increment(){
             this.Cv+=this.clickPower;
@@ -62,7 +44,7 @@ const app = Vue.createApp({
         },
         processUpgrade(id){
             // for some reason there is a problem in the game loop that wasnt there before
-            if(this.Cv>this.upgrades[id].cost){
+            if(this.Cv>=this.upgrades[id].cost){
                 let methodName = this.upgrades[id].method;
                 if (this[methodName]) {
                     this[methodName](id);

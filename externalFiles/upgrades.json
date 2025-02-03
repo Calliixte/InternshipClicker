@@ -1,0 +1,26 @@
+[
+  {
+    "id": 0,
+    "title": "Click Power Upgrade",
+    "description": "Augments the click power by 1",
+    "method": "upgradeClickPower",
+    "cost": 10,
+    "amountBought": 0
+  },
+  {
+    "id": 1,
+    "title": "Click Power Upgrade 2",
+    "description": "Paid dlc of the first click power upgrade",
+    "method": "timesTwoClickPower",
+    "cost": 100,
+    "amountBought": 0
+  },
+  {
+    "id": 2,
+    "title": "Passive Upgrade 1",
+    "description": "Testing the unfiltered power of pure clicking",
+    "method": "passiveUpTest",
+    "cost": 2,
+    "amountBought": 0
+  }
+]
