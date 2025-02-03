@@ -26,7 +26,7 @@
             <div class="upgrade" v-for="(up,index) in upgrades" :key="index">
                 <h3 class="text">{{upgrades[index].title}}</h3>
                 <p class="text">{{upgrades[index].description}}</p>
-                <button class="button" @click="processUpgrade(index)">Buy ({{upgrades[index].cost}} Cv)</button>
+                <button class="button" @mouseenter="(event) => checkCost(index,event)" @click="processUpgrade(index)">Buy ({{upgrades[index].cost}} Cv)</button>
             </div>
         </div>
         <div v-else>

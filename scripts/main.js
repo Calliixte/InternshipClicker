@@ -42,6 +42,14 @@ const app = Vue.createApp({
         giveMax(){
             this.Cv+=999999;
         },
+        checkCost(id,event){
+            let button = event.target;
+            if(this.Cv>=this.upgrades[id].cost){
+                button.style.cursor="inherit";
+            }else{
+                button.style.cursor="no-drop";
+            }
+        },
         processUpgrade(id){
             // for some reason there is a problem in the game loop that wasnt there before
             if(this.Cv>=this.upgrades[id].cost){
