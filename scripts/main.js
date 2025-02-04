@@ -28,6 +28,11 @@ const app = Vue.createApp({
             })
             .catch(error=>console.error('JSON fetch error : ',error));
     },
+    beforeUnmount() {
+        //since this is single page app removing the event listeners is not needed but i include it for best practices
+        window.removeEventListener("keydown", this.handleKeydown);
+        window.removeEventListener("keyup", this.handleKeyup);
+      },
 
     methods : {
         increment(){
