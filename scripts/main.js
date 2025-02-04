@@ -32,6 +32,9 @@ const app = Vue.createApp({
         showUpgrades(){
             this.upgradesShown = !this.upgradesShown;
         },
+        test(){
+            console.log(test);
+        },
         changeClickPower(nb){
             this.clickPower+=nb;
         },
@@ -47,6 +50,7 @@ const app = Vue.createApp({
         initUpgrade(id){
             this.upgrades[id].cost=this.upgrades[id].baseCost;
         },
+        //have temporary bonuses at some random point
         unlockNew(){
             if(this.maxUnlockedId>=this.upgradesNb-1){ //-1 cuz we are using ids that start at 0 for the upgrades
                 console.log("no upgrades left"); //find a way to signal this better
