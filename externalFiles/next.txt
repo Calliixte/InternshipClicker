@@ -1,0 +1,3 @@
+-give a count under the upgrade to show how much until next upgrade
+-implement actual upgrades (written in the other file)
+
