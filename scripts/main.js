@@ -57,6 +57,8 @@ const app = Vue.createApp({
                 if(this.codeCounter+1==code.length){
                     this.giveMax();
                     this.codeCounter=0;
+                    let audio =  new Audio("./externalFiles/crazyFun.mp3");
+                    audio.play();
                     //playsound or something i need this to be more festive
                 }else{
                     this.codeCounter++;
