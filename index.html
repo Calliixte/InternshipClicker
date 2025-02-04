@@ -23,9 +23,8 @@
             <h2 id="count" class="text">{{Cv}}</h2>
             <h2 class="text">jobs</h2>
         </div>
-        <button class="button" @click="increment" @keydown.i="increment" tabindex="0">Increment</button>
+        <button class="button" @click="increment">Increment</button>
         <button class="button"  @click="showUpgrades">Show/Hide Upgrades</button>
-        <template></template> 
         <div id="upgradeList" v-show="upgradesShown"> 
             <div class="upgrade" v-for="(up,index) in upgrades" :key="index">
                 <div v-if="upgrades[index].cost!=-1">

@@ -12,10 +12,14 @@ const app = Vue.createApp({
             settingsShown : false,
             upgradesShown : false,
             upgrades : null,
+            keysPressed : {},
+            codeCounter : 0,
             //notes for me : [] = array | {} = object
         };
     },
     mounted(){
+    window.addEventListener("keydown", this.handleKeydown);
+    window.addEventListener("keyup", this.handleKeyup);
         fetch('../externalFiles/upgrades.json')
             .then(response=>response.json())
             .then(data=>{
@@ -32,8 +36,31 @@ const app = Vue.createApp({
         showUpgrades(){
             this.upgradesShown = !this.upgradesShown;
         },
-        test(){
-            console.log(test);
+        handleKeydown(event) { 
+            this.keysPressed[event.key] = true; // Store key state
+            this.checkCheat(event.key);
+            console.log(Object.keys(this.keysPressed));
+          },
+        handleKeyup(event) {
+            this.keysPressed = {}; // Remove key from active list
+        },
+        checkCheat(newKey){ //↑↑↓↓←→←→B A Start 
+            //right now this loads the code into memory each time so it takes more ressource than needed,
+            //either pass a code as a parameter or make it a data(){} variable for better
+            const code = ["ArrowUp","ArrowUp","ArrowDown","ArrowDown","ArrowLeft","ArrowRight","ArrowLeft","ArrowRight","b","a","Enter"];
+            if(newKey === code[this.codeCounter]){
+                if(this.codeCounter+1==code.length){
+                    this.giveMax();
+                    this.codeCounter=0;
+                    //playsound or something i need this to be more festive
+                }else{
+                    this.codeCounter++;
+                    console.log("next key : " + code[this.codeCounter]);
+                }
+                
+            }else{
+                this.codeCounter=0;
+            }
         },
         changeClickPower(nb){
             this.clickPower+=nb;
