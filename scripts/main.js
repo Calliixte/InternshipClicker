@@ -21,7 +21,7 @@ const app = Vue.createApp({
     mounted(){
     window.addEventListener("keydown", this.handleKeydown);
     window.addEventListener("keyup", this.handleKeyup);
-        fetch('../externalFiles/upgrades.json')
+        fetch('/externalFiles/upgrades.json')
             .then(response=>response.json())
             .then(data=>{
                 this.upgrades = data;
