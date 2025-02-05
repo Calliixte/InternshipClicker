@@ -4,6 +4,7 @@ const app = Vue.createApp({
         return{
             title : 'Random aah clicker',
             Cv : 0,
+            AMOUNT_UNLOCK : 10,
             passiveCv : 0,
             passiveStarted : false,
             clickPower : 1,
@@ -115,7 +116,7 @@ const app = Vue.createApp({
                 this.Cv-=this.upgrades[id].cost;
                 this.upgrades[id].amountBought++;
                 this.updatePrice(id);
-                if(this.upgrades[id].amountBought===10){
+                if(this.upgrades[id].amountBought===this.AMOUNT_UNLOCK){
                     this.unlockNew();
                 }
             }else{
@@ -129,7 +130,9 @@ const app = Vue.createApp({
         },
         upgradeClickPower(id){
                 this.changeClickPower(1);
-
+        },
+        upgradeTenClickPower(id){ //i'd need to change how this works because this is really lame rn
+            this.changeClickPower(10);
         },
         timesTwoClickPower(id){
             this.changeClickPower(this.clickPower);

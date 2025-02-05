@@ -31,7 +31,9 @@
                     <h3 class="text">{{upgrades[index].title}}</h3>
                     <p class="text">{{upgrades[index].description}}</p>
                     <p class="text">{{upgrades[index].effect}}</p>
-                    <button class="button" @mouseenter="(event) => checkCost(index,event)" @click="processUpgrade(index)">Buy ({{upgrades[index].cost}} Cv)</button>
+                    <p class="text" v-if="AMOUNT_UNLOCK-upgrades[index].amountBought>0">Amount until next upgrade : {{AMOUNT_UNLOCK-upgrades[index].amountBought}}</p>
+                    <button class="button" @mouseenter="(event) => checkCost(index,event)" @click="processUpgrade(index)">Buy (Get rejected on {{upgrades[index].cost}} applications)</button>
+                    
                 </div>
                 
             </div>
