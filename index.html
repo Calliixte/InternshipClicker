@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Basic Manipulation</title>
     <link href="./style/style.css" rel="stylesheet" />
+    <link href="./style/giganticButtonsStyle.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/vue@3/dist/vue.global.js" defer></script>
     <script src="./scripts/main.js" defer></script> 
     
@@ -12,19 +14,20 @@
      i'd rather use that in order to keep the code cleaner -->
 </head>
 <body>
+    
     <div id="app">
         <button id="BTNSettings" @click="showSettings">
             <img src="./externalFiles/settings.svg" alt="settings">
         </button>
         <h1 class="text">{{title}}</h1>
-        <h3 class="text">CVs per click : {{clickPower}} | Passive CVs : {{passiveCv}}</h3>
+        <h3 class="text">Applications per click : {{clickPower}} | Passive Applications : {{passiveCv}}</h3>
         <div id="counter">
-            <h2 class="text">Applied to : </h2>
             <h2 id="count" class="text">{{Cv}}</h2>
-            <h2 class="text">jobs</h2>
+            <h2 class="text">Applications Pending</h2>
         </div>
-        <button class="button" @click="increment">Increment</button>
-        <button class="button"  @click="showUpgrades">Show/Hide Upgrades</button>
+        <button class="clickButton" class="button" id="mainButton" @click="increment">Apply</button>
+        <button class="buttonSwitch" class="button" v-if="upgradesShown" @click="showUpgrades">Hide Upgrades</button>
+        <button class="buttonSwitch" v-else @click="showUpgrades">Show Upgrades</button>
         <div id="upgradeList" v-show="upgradesShown"> 
             <div class="upgrade" v-for="(up,index) in upgrades" :key="index">
                 <div v-if="upgrades[index].cost!=-1">
@@ -32,7 +35,7 @@
                     <p class="text">{{upgrades[index].description}}</p>
                     <p class="text">{{upgrades[index].effect}}</p>
                     <p class="text" v-if="AMOUNT_UNLOCK-upgrades[index].amountBought>0">Amount until next upgrade : {{AMOUNT_UNLOCK-upgrades[index].amountBought}}</p>
-                    <button class="button" @mouseenter="(event) => checkCost(index,event)" @click="processUpgrade(index)">Buy (Get rejected on {{upgrades[index].cost}} applications)</button>
+                    <button class="clickButton" class="button" @mouseenter="(event) => checkCost(index,event)" @click="processUpgrade(index)">Upgrade (Get rejected on {{upgrades[index].cost}} applications)</button>
                     
                 </div>
                 
@@ -49,10 +52,10 @@
             </div>
 
             <h3>Change the interface</h3>
-            <input type="color" id="col1">Background color</input>
-            <input type="color" id="col2">Text color</input>
+            <input type="color" id="col1" value="#ffffff">Background color</input>
+            <input type="color" id="col2" value="#000000">Text color</input>
 
-            <button class="button"  onclick="addTwoColors()">Add new theme</button>
+            <button  class="clickButton"  onclick="addTwoColors()">Add new theme</button>
             <table>
                 <tbody>
                     <tr>

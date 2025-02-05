@@ -2,7 +2,7 @@
 const app = Vue.createApp({
     data () {
         return{
-            title : 'Random aah clicker',
+            title : 'Very realistic simulation of the job market', 
             Cv : 0,
             AMOUNT_UNLOCK : 10,
             passiveCv : 0,
@@ -164,6 +164,7 @@ function dynamicCol(){
 }
 function changeColor(e){
     const text = document.querySelectorAll("body .text");
+    const btnBg = document.querySelectorAll("body .clickButton,.buttonSwitch");
     let ligne=e.target.parentElement.innerText;
     const colors = ligne.split("\t");
     const fgCol = colors[1];
@@ -171,6 +172,10 @@ function changeColor(e){
     const bg= document.querySelector("body");
     bg.style.backgroundColor=bgCol;
     text.forEach((element) => element.style.color=fgCol);
+    btnBg.forEach((element) => {
+        element.style.backgroundColor=fgCol;
+        element.style.color=bgCol;
+    });
 }
 function colorText(){
     const p = document.querySelector('body table');
