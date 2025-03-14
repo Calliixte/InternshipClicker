@@ -45,7 +45,7 @@
         <div v-else>
             <p class="text" v-show="!upgradesShown">No upgrades shown</p>
         </div>
-        <div v-show="settingsShown" class = "popup">
+        <div v-show="settingsShown" class = "popup" id="movePopup">
             <div class="BTNClose">
                 <button @click="showSettings">
                     <img src="./externalFiles/close.svg" alt="leave">

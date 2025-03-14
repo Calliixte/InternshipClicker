@@ -198,5 +198,28 @@ function addTwoColors(){
     dynamicCol(); 
 }
 
+
+
+let totalMovementX = 0; //toutes les images ont le meme décalage par contre
+let totalMovementY = 0;  // à fix en recuperant les valeurs au préalable
+function move_img(event){
+    if(event.buttons === 1 ||event.buttons === 3){
+        
+        let cadreActuel = event.target;
+        if(event.target.type!=HTMLDivElement){
+            cadreActuel = event.target.parentElement;
+        }else{
+            cadreActuel = event.target;
+        }
+        let moveX = event.movementX;
+        let moveY = event.movementY;
+        totalMovementX+=moveX;
+        totalMovementY+=moveY;
+        cadreActuel.style.left=totalMovementX+"px";
+        cadreActuel.style.top=totalMovementY+"px";
+    }
+
+}
+document.getElementById("movePopup").addEventListener("mousemove");
 document.addEventListener("DOMContentLoaded",(event => {dynamicCol()}));
 document.addEventListener("DOMContentLoaded",(event => {colorText()}));
