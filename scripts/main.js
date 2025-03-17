@@ -202,10 +202,11 @@ function addTwoColors(){
 
 let totalMovementX = 0; //toutes les images ont le meme décalage par contre
 let totalMovementY = 0;  // à fix en recuperant les valeurs au préalable
-function move_img(event){
+function move_img1(event){
     if(event.buttons === 1 ||event.buttons === 3){
         
-        let cadreActuel = event.target;
+        let cadreActuel = document.getElementById("movePopup");
+        cadreActuel.style.cursor = "grab";
         if(event.target.type!=HTMLDivElement){
             cadreActuel = event.target.parentElement;
         }else{
@@ -220,6 +221,12 @@ function move_img(event){
     }
 
 }
-document.getElementById("movePopup").addEventListener("mousemove");
+function move_img(){
+    console.log("test")
+}
+
+document.addEventListener("DOMContentLoaded",event =>{
+    document.getElementById("movePopup").addEventListener("mousemove",move_img1);
+})
 document.addEventListener("DOMContentLoaded",(event => {dynamicCol()}));
 document.addEventListener("DOMContentLoaded",(event => {colorText()}));
